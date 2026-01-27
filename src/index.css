@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background-color: #050505;
+  color: #ffffff;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: crosshair; /* Mantenemos el estilo gamer */
+}
+
+/* --- ESTILO DE SELECCIÓN DE TEXTO (Hyper Cool) --- */
+::selection {
+  background-color: #FAFF00; /* Fondo Amarillo */
+  color: #000000; /* Texto Negro */
+}
+
+/* --- SCROLLBAR CUSTOMIZADA AMARILLA --- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FAFF00; /* Amarillo Neón */
+  border-radius: 9999px; /* Bordes muy redondos (Cute) */
+  border: 2px solid #0a0a0a; /* Borde negro para separación */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B026FF; /* Cambia a morado si lo tocas */
+  box-shadow: 0 0 15px #B026FF;
+}

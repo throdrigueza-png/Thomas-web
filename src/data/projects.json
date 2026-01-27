@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "Susumiya OS",
+    "url": "https://calm-flower-0e1609b0f.4.azurestaticapps.net/",
+    "description": "Sistema Operativo web estilo anime. Interfaz sublime.",
+    "tech": ["React", "Azure", "Anime.js"],
+    "category": "Web OS"
+  },
+  {
+    "id": 2,
+    "title": "Project Hercules",
+    "url": "https://lemon-ocean-0f749e70f.4.azurestaticapps.net/",
+    "description": "Plataforma de gestión física y fuerza. Estilo griego/cyber.",
+    "tech": ["React", "Tailwind", "Motion"],
+    "category": "Fitness"
+  },
+  {
+    "id": 3,
+    "title": "PsychoMind",
+    "url": "https://psychomind.page.gd/?i=1",
+    "description": "Exploración psicológica interactiva.",
+    "tech": ["HTML5", "CSS3", "JS"],
+    "category": "Psychology"
+  },
+  {
+    "id": 4,
+    "title": "Afectivamente",
+    "url": "http://afectivamente.gt.tc",
+    "description": "Recursos de salud mental y afectividad.",
+    "tech": ["Frontend", "UX/UI"],
+    "category": "Psychology"
+  },
+  {
+    "id": 5,
+    "title": "No Me Odies",
+    "url": "https://nomeodiesplstqm.infinityfree.me/",
+    "description": "Experiencia narrativa web personal.",
+    "tech": ["PHP", "MySQL"],
+    "category": "Personal"
+  }
+]

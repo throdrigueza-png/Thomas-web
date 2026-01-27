@@ -1,0 +1,30 @@
+{
+  "personal": {
+    "name": "Thomas Fernando Rodríguez Anzola",
+    "role": "Estadístico & Desarrollador Full Stack",
+    "email": "thomasfernandoroan@gmail.com",
+    "phone": "+57 320 936 8386",
+    "location": "Bogotá, Colombia",
+    "bio": "Perfil integral que fusiona el rigor de las matemáticas y la estadística con la agilidad del desarrollo web y la ciencia de datos. Enfoque resiliente, analítico y comprometido."
+  },
+  "education": [
+    {
+      "title": "Pregrado en Estadística",
+      "institution": "Universidad Nacional de Colombia",
+      "status": "Cursando 2do Semestre"
+    },
+    {
+      "title": "Tecnólogo en Análisis y Desarrollo de Software",
+      "institution": "SENA",
+      "status": "7mo Trimestre - Fin etapa lectiva: Abril 2026"
+    }
+  ],
+  "skills": [
+    { "name": "Python (Data Science)", "level": 90 },
+    { "name": "SQL & Bases de Datos", "level": 85 },
+    { "name": "HTML/CSS/JS", "level": 95 },
+    { "name": "Java/C#/PHP", "level": 70 },
+    { "name": "Inglés (B2/C1)", "level": 80 },
+    { "name": "IA & Prompting", "level": 85 }
+  ]
+}
