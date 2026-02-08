@@ -17,11 +17,11 @@ const Contact = () => {
             {/* Tarjeta CV */}
             <div className="p-8 bg-gray-900 bg-opacity-60 border border-hacker-green rounded-xl backdrop-blur">
                 <h3 className="text-2xl font-mono text-hacker-green mb-4">ACCESS_DATA_FILE</h3>
-                <p className="text-white-400 mb-6">Descarga mi Hoja de Vida completa.</p>
+                <p className="text-gray-400 mb-6">Descarga mi Hoja de Vida completa.</p>
                 <a 
                     href="/cv.pdf" 
                     download="Thomas_Rodriguez_CV.pdf"
-                    className="inline-block px-8 py-3 bg-hacker-green text-black font-bold rounded hover:shadow-[0_0_20px_#00FF00] transition-all"
+                    className="inline-block px-8 py-3 bg-hacker-green text-white font-bold rounded hover:shadow-[0_0_20px_#00FF00] transition-all"
                 >
                     DOWNLOAD CV [PDF]
                 </a>
