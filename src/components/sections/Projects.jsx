@@ -8,7 +8,7 @@ const Projects = () => {
       {projectsData.map((project) => (
         <motion.div
           key={project.id}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 20, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           whileHover={{ scale: 1.02 }}

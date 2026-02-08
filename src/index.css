@@ -4,7 +4,7 @@
 
 :root {
   --neon-yellow: #FAFF00;
-  --bg-black: #000000;
+  --bg-black: #042346;
 }
 
 body {
@@ -21,7 +21,7 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: #027e55;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--neon-yellow);
