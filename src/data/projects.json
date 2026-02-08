@@ -11,8 +11,8 @@
     "id": "02",
     "title": "BAD APPLE: MULTI-SOURCE ENGINE",
     "description": "Sincronización multimedia de alto rendimiento. Integración de audio-video para Mambo, Miku y Teto con optimización de frames.",
-    "tech": ["Canvas API", "AudioContext", "JavaScript", "Optimization"],
-    "link": "https://bad-apple-server-thomas-ahdrddfnazf8gqg0.eastus2-01.azurewebsites.net/",
+    "tech": ["Canvas API", "AudioContext", "JavaScript", "Optimization", "Angular"],
+    "link": "https://agreeable-forest-05ea7770f.2.azurestaticapps.net",
     "featured": false
   },
   {
