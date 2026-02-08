@@ -2,19 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --neon-yellow: #FAFF00;
+}
+
 body {
-  background-color: #000;
-  color: #fff;
-  cursor: crosshair;
+  margin: 0;
+  background-color: #000000; /* Fondo base obligatorio */
+  color: #ffffff;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
-/* Evitar que el texto se pierda */
-h1, h2, h3, p, span {
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+/* Arreglo de visibilidad para que nada tape las partículas */
+#root {
+  position: relative;
+  z-index: 1;
 }
 
-/* Animación para GeriCare */
-.featured-project {
-  border: 2px solid #FAFF00;
-  box-shadow: 0 0 40px rgba(250, 255, 0, 0.2);
+/* Efecto de cristal para las tarjetas */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(250, 255, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border: 1px solid var(--neon-yellow);
+  box-shadow: 0 0 20px rgba(250, 255, 0, 0.15);
+}
+
+/* Scrollbar estilo Cyberpunk */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--neon-yellow);
+  border-radius: 10px;
 }
