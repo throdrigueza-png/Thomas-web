@@ -11,37 +11,38 @@ const MatrixBackground = () => {
     }).then(() => setInit(true));
   }, []);
 
-  const options = {
-    fullScreen: { enable: true, zIndex: -1 }, // Ahora sí ocupa todo el fondo real
-    background: { color: "#000000" },
-    fpsLimit: 120,
-    particles: {
-      color: { value: "#FAFF00" },
-      move: {
-        enable: true,
-        direction: "bottom",
-        speed: { min: 3, max: 8 }, // Velocidad variable para dinamismo
-        straight: true,
-      },
-      number: {
-        value: 80,
-        density: { enable: true, area: 800 },
-      },
-      opacity: {
-        value: { min: 0.1, max: 0.5 }, // Efecto de profundidad
-      },
-      shape: {
-        type: "char",
-        character: [
-          { value: ["0", "1"], font: "monospace", weight: "400" },
-          { value: ["ア", "イ", "ウ", "エ", "オ"], font: "monospace", weight: "400" }
-        ],
-      },
-      size: { value: { min: 10, max: 20 } },
-    }
-  };
+  if (!init) return null;
 
-  return init ? <Particles id="tsparticles" options={options} /> : null;
+  return (
+    <Particles
+      id="tsparticles"
+      options={{
+        fullScreen: { enable: true, zIndex: -1 },
+        background: { color: "#000000" },
+        fpsLimit: 60,
+        particles: {
+          color: { value: "#FAFF00" },
+          move: {
+            enable: true,
+            direction: "bottom",
+            speed: 4,
+            straight: true,
+          },
+          number: { value: 90, density: { enable: true, area: 800 } },
+          opacity: { value: 0.6 },
+          shape: {
+            type: "char",
+            character: {
+              value: ["0", "1", "ア", "イ", "ウ", "エ", "オ", "力", "キ", "ク"],
+              font: "monospace",
+              weight: "bold"
+            }
+          },
+          size: { value: { min: 12, max: 20 } },
+        }
+      }}
+    />
+  );
 };
 
 export default MatrixBackground;
