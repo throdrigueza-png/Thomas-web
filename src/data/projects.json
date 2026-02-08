@@ -1,57 +1,25 @@
 [
   {
     "id": "01",
-    "title": "GeriCare: Gestión de Salud Integral",
-    "description": "Plataforma premium para la gestión de cuidados geriátricos. Arquitectura escalable con enfoque en accesibilidad y UX/UI moderno.",
-    "tech": ["React", "Azure", "Node.js", "Tailwind"],
+    "title": "GeriCare: Health Management",
+    "description": "Plataforma integral para gestión geriátrica. Arquitectura escalable y UX de alta fidelidad.",
+    "tech": ["React", "Azure", "Tailwind", "Node.js"],
     "link": "https://gericare-web-2026-beh2e0ajecf3h4a4.westus3-01.azurewebsites.net/",
     "featured": true
   },
   {
     "id": "02",
     "title": "Bad Apple: Multi-Source Engine",
-    "description": "Sincronización avanzada de audio y video de alta disponibilidad. Versión mejorada con Mambo, Miku y Teto.",
-    "tech": ["Azure App Service", "API Rest", "JavaScript"],
+    "description": "Sincronización de audio y video con Mambo, Miku y Teto. Optimizado para alto rendimiento.",
+    "tech": ["JavaScript", "Azure App Service", "Multimedia Engine"],
     "link": "https://bad-apple-server-thomas-ahdrddfnazf8gqg0.eastus2-01.azurewebsites.net/",
     "featured": false
   },
   {
     "id": "03",
-    "title": "Project Hercules",
-    "description": "Sistema de gestión fitness con estética ciber-griega. Optimización de rendimiento y persistencia de datos.",
-    "tech": ["React", "Framer Motion", "CSS Grid"],
-    "link": "#",
-    "featured": false
-  },
-  {
-    "id": "04",
-    "title": "Afectivamente",
-    "description": "Ecosistema digital de salud mental y recursos psicológicos. Interfaz minimalista y terapéutica.",
-    "tech": ["Frontend", "UX/UI", "Framer Motion"],
-    "link": "#",
-    "featured": false
-  },
-  {
-    "id": "05",
-    "title": "Data Insight: Predictive Models",
-    "description": "Análisis estadístico y ciencia de datos aplicada. Modelado con Python para la toma de decisiones.",
-    "tech": ["Python", "Pandas", "Scikit-learn"],
-    "link": "#",
-    "featured": false
-  },
-  {
-    "id": "06",
-    "title": "AI Integration Suite",
-    "description": "Implementación de APIs de IA para automatización de tareas y generación de contenido dinámico.",
-    "tech": ["OpenAI API", "Prompt Engineering", "Python"],
-    "link": "#",
-    "featured": false
-  },
-  {
-    "id": "07",
-    "title": "Asset Management Pro",
-    "description": "Control de inventarios y soporte técnico institucional con arquitectura robusta.",
-    "tech": ["SQL", "Java", "Backend"],
+    "title": "Predictive Data Analytics",
+    "description": "Modelado estadístico avanzado utilizando rigor matemático para insights de negocio.",
+    "tech": ["Python", "SQL", "Scikit-Learn", "Pandas"],
     "link": "#",
     "featured": false
   }
