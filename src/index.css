@@ -2,40 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  background-color: #050505;
-  color: #ffffff;
-}
-
 body {
-  margin: 0;
-  overflow-x: hidden;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  cursor: crosshair; /* Mantenemos el estilo gamer */
+  background-color: #000;
+  color: #fff;
+  cursor: crosshair;
 }
 
-/* --- ESTILO DE SELECCIÓN DE TEXTO (Hyper Cool) --- */
-::selection {
-  background-color: #FAFF00; /* Fondo Amarillo */
-  color: #000000; /* Texto Negro */
+/* Evitar que el texto se pierda */
+h1, h2, h3, p, span {
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
-/* --- SCROLLBAR CUSTOMIZADA AMARILLA --- */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #0a0a0a;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #FAFF00; /* Amarillo Neón */
-  border-radius: 9999px; /* Bordes muy redondos (Cute) */
-  border: 2px solid #0a0a0a; /* Borde negro para separación */
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #B026FF; /* Cambia a morado si lo tocas */
-  box-shadow: 0 0 15px #B026FF;
+/* Animación para GeriCare */
+.featured-project {
+  border: 2px solid #FAFF00;
+  box-shadow: 0 0 40px rgba(250, 255, 0, 0.2);
 }
