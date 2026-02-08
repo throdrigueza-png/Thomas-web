@@ -27,8 +27,8 @@
     "id": "04",
     "title": "HARUI: EXPERIMENTAL UI",
     "description": "Laboratorio de interfaces reactivas. Explorando los límites de Framer Motion y la experiencia de usuario inmersiva.",
-    "tech": ["Framer Motion", "React", "Design Systems"],
-    "link": "#",
+    "tech": ["Framer Motion", "IA", "Design Systems"],
+    "link": "https://calm-flower-0e1609b0f.4.azurestaticapps.net",
     "featured": false
   },
   {
@@ -36,23 +36,23 @@
     "title": "AFECTIVAMENTE",
     "description": "Plataforma de bienestar mental. Análisis de datos aplicado a la salud psicológica con interfaces humanas.",
     "tech": ["Data Analytics", "React", "UX Research"],
-    "link": "#",
+    "link": "https://afectivamente.gt.tc/",
     "featured": false
   },
   {
     "id": "06",
-    "title": "ESTADÍSTICA PREDICTIVA (UNAL)",
+    "title": "Grupo un de la unal(sub-susumiya)",
     "description": "Modelado matemático y probabilístico. El rigor científico de la Universidad Nacional aplicado al software.",
-    "tech": ["Python", "R", "Statistics", "Machine Learning"],
-    "link": "#",
+    "tech": ["Python", "front super detallado", "Statistics", "Machine Learning"],
+    "link": "https://calm-flower-0e1609b0f.4.azurestaticapps.net/profile/UnGroupPage",
     "featured": false
   },
   {
     "id": "07",
-    "title": "SISTEMA DE GESTIÓN DE ACTIVOS",
-    "description": "Control de inventarios y soporte técnico profesional. Mi base sólida en lógica de negocio y bases de datos.",
-    "tech": ["Java", "SQL Server", "Backend Architecture"],
-    "link": "#",
+    "title": "Hercules una web (for: Danna)",
+    "description": "página hecha para una amiga y su mamá de gestión de comercio creo :v.",
+    "tech": ["python", "front", "responsive"],
+    "link": "https://lemon-ocean-0f749e70f.4.azurestaticapps.net",
     "featured": false
   }
 ]
