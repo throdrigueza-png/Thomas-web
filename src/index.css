@@ -11,12 +11,12 @@ body {
   background-color: var(--bg-black);
   color: #ffffff;
   margin: 0;
-  font-family: 'Inter', sans-serif;
   overflow-x: hidden;
-  cursor: crosshair; /* Cursor estilo gamer */
+  /* Cursor gamer opcional */
+  cursor: crosshair; 
 }
 
-/* Scrollbar personalizada Amarillo Neón */
+/* Scrollbar personalizada */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -25,19 +25,14 @@ body {
 }
 ::-webkit-scrollbar-thumb {
   background: var(--neon-yellow);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #fff;
-  box-shadow: 0 0 10px var(--neon-yellow);
+  border-radius: 0;
 }
 
-/* --- ANIMACIÓN GLITCH (Para el Título) --- */
+/* --- EFECTO GLITCH --- */
 .glitch {
   position: relative;
   color: white;
 }
-
 .glitch::before,
 .glitch::after {
   content: attr(data-text);
@@ -46,16 +41,14 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #000; /* Importante para cortar el texto */
+  background: #000;
 }
-
 .glitch::before {
   left: 2px;
   text-shadow: -2px 0 #ff00c1;
   clip: rect(44px, 450px, 56px, 0);
   animation: glitch-anim 5s infinite linear alternate-reverse;
 }
-
 .glitch::after {
   left: -2px;
   text-shadow: -2px 0 #00fff9, 2px 2px #FAFF00;
@@ -79,11 +72,4 @@ body {
   60% { clip: rect(64px, 9999px, 34px, 0); }
   80% { clip: rect(13px, 9999px, 77px, 0); }
   100% { clip: rect(98px, 9999px, 45px, 0); }
-}
-
-/* Utilidad para tarjetas */
-.glass-card {
-  background: rgba(20, 20, 20, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
 }

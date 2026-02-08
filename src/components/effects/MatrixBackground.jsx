@@ -12,45 +12,64 @@ const MatrixBackground = () => {
   }, []);
 
   const options = {
-    // CLAVE: zIndex -1 pone esto en el "sótano" de la web
-    fullScreen: { enable: true, zIndex: -1 },
+    // DESACTIVADO FULLSCREEN AUTOMÁTICO PARA CONTROL MANUAL (EVITA ERRORES DE CAPAS)
+    fullScreen: { enable: false },
     background: {
-      color: "#000000", // El fondo negro SÓLIDO
+      color: "transparent", // Dejamos que el CSS global ponga el negro
     },
     fpsLimit: 120,
+    detectRetina: true,
     particles: {
-      color: { value: "#FAFF00" }, // Amarillo Neón
+      color: { value: "#FAFF00" }, // Amarillo Neón puro
       move: {
         enable: true,
-        direction: "bottom", // Caen hacia abajo como Matrix
-        speed: 3,
-        straight: true,
+        direction: "bottom", // Caen hacia abajo
+        speed: 3.5, // Velocidad perfecta para leer pero dinámica
+        straight: true, // Caída recta tipo Matrix
+        outModes: {
+          default: "out", // Reaparecen arriba al salir
+        }
       },
       number: {
-        value: 100, // Cantidad perfecta para no saturar
+        value: 90, // Cantidad densa pero sin saturar
         density: { enable: true, area: 800 },
       },
       opacity: {
-        value: { min: 0.1, max: 0.5 },
+        value: { min: 0.1, max: 0.6 }, // Variación de brillo para profundidad
         animation: {
           enable: true,
-          speed: 0.5,
+          speed: 1, // Parpadeo sutil
           sync: false
         }
       },
       shape: {
-        type: "char", // Caracteres estilo código
+        type: "char", // IMPORTANTE: Tipo caracter
         character: {
-          value: ["0", "1", "ア", "イ", "ウ", "DATA", "CODE", "⚡"],
-          font: "monospace",
+          // AQUÍ ESTÁN LOS KATAKANAS QUE PEDISTE + CÓDIGO
+          value: [
+            "ア", "イ", "ウ", "エ", "オ", "カ", "キ", "ク", "ケ", "コ", 
+            "サ", "シ", "ス", "セ", "ソ", "タ", "チ", "ツ", "テ", "ト", 
+            "ナ", "ニ", "ヌ", "ネ", "ノ", "ハ", "ヒ", "フ", "ヘ", "ホ",
+            "0", "1", "⚡", "DATA", "CODE"
+          ],
+          font: "Verdana", // Fuente segura que renderiza bien los símbolos
           weight: "bold"
         }
       },
-      size: { value: { min: 12, max: 20 } },
+      size: { value: { min: 12, max: 22 } }, // Tamaños variados para efecto 3D
     }
   };
 
-  return init ? <Particles id="tsparticles" options={options} /> : null;
+  if (!init) return null;
+
+  return (
+    <Particles 
+      id="tsparticles" 
+      options={options} 
+      // ESTA CLASE ES LA CLAVE PARA QUE SE VEA AL FONDO:
+      className="absolute inset-0 w-full h-full z-0 pointer-events-none"
+    />
+  );
 };
 
 export default MatrixBackground;
