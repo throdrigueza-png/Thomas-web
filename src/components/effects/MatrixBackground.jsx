@@ -8,57 +8,40 @@ const MatrixBackground = () => {
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
-    }).then(() => {
-      setInit(true);
-    });
+    }).then(() => setInit(true));
   }, []);
 
   const options = {
-    fullScreen: { enable: false }, // Importante: false para controlarlo nosotros
-    background: {
-      color: "transparent", // Transparente para que no tape nada
-    },
-    fpsLimit: 60,
+    fullScreen: { enable: true, zIndex: -1 }, // Ahora sí ocupa todo el fondo real
+    background: { color: "#000000" },
+    fpsLimit: 120,
     particles: {
-      color: { value: ["#FAFF00", "#FFFFFF", "#B026FF"] }, // AMARILLO, BLANCO, MORADO
+      color: { value: "#FAFF00" },
       move: {
         enable: true,
         direction: "bottom",
-        speed: 3,
+        speed: { min: 3, max: 8 }, // Velocidad variable para dinamismo
         straight: true,
       },
       number: {
+        value: 80,
         density: { enable: true, area: 800 },
-        value: 60, // Cantidad de partículas
       },
       opacity: {
-        value: 0.8,
+        value: { min: 0.1, max: 0.5 }, // Efecto de profundidad
       },
       shape: {
         type: "char",
-        character: {
-          value: ["ア", "イ", "ウ", "A", "B", "C", "⚡", "♥", "★", "1", "0"], 
-          font: "Verdana",
-          weight: "bold",
-          fill: true,
-        },
+        character: [
+          { value: ["0", "1"], font: "monospace", weight: "400" },
+          { value: ["ア", "イ", "ウ", "エ", "オ"], font: "monospace", weight: "400" }
+        ],
       },
-      size: { value: { min: 14, max: 24 } },
-    },
-    detectRetina: true,
+      size: { value: { min: 10, max: 20 } },
+    }
   };
 
-  if (init) {
-    return (
-      <Particles 
-        id="tsparticles" 
-        options={options} 
-        className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none" 
-      />
-    );
-  }
-
-  return <></>;
+  return init ? <Particles id="tsparticles" options={options} /> : null;
 };
 
 export default MatrixBackground;
