@@ -17,28 +17,41 @@ const MatrixBackground = () => {
     <Particles
       id="tsparticles"
       options={{
+        // IMPORTANTE: zIndex -1 para que quede al fondo, pero background transparente
         fullScreen: { enable: true, zIndex: -1 },
-        background: { color: "#000000" },
+        background: {
+          color: "transparent", // <--- CAMBIO CLAVE: TRANSPARENTE
+        },
         fpsLimit: 60,
         particles: {
-          color: { value: "#FAFF00" },
+          color: { value: "#FAFF00" }, // Amarillo Neón
           move: {
             enable: true,
             direction: "bottom",
-            speed: 4,
+            speed: 3, // Velocidad ajustada para que se note el movimiento
             straight: true,
           },
-          number: { value: 90, density: { enable: true, area: 800 } },
-          opacity: { value: 0.6 },
+          number: {
+            value: 120, // AUMENTÉ LA CANTIDAD para que se noten más
+            density: { enable: true, area: 800 },
+          },
+          opacity: {
+            value: { min: 0.1, max: 0.8 }, // Más variación de opacidad
+            animation: {
+              enable: true,
+              speed: 1,
+              sync: false
+            }
+          },
           shape: {
             type: "char",
             character: {
-              value: ["0", "1", "ア", "イ", "ウ", "エ", "オ", "力", "キ", "ク"],
+              value: ["0", "1", "ア", "イ", "ウ", "エ", "オ", "⚡", "µ", "§"],
               font: "monospace",
               weight: "bold"
             }
           },
-          size: { value: { min: 12, max: 20 } },
+          size: { value: { min: 14, max: 24 } }, // Hice los caracteres un poco más grandes
         }
       }}
     />
