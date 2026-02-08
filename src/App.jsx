@@ -27,7 +27,7 @@ function App() {
         {/* HERO SECTION */}
         <div className="flex flex-col items-center justify-center min-h-screen text-center p-4">
           
-          {/* AVATAR: Usando tu archivo 'anime.png' de la carpeta public */}
+          {/* AVATAR: Usando tu archivo 'img.jpg' de la carpeta public */}
           <motion.div 
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -35,7 +35,7 @@ function App() {
             className="w-64 h-64 mb-8 rounded-full border-4 border-neon-yellow shadow-[0_0_30px_#FAFF00] overflow-hidden bg-black relative group"
           >
                <img 
-                 src="/anime.png" 
+                 src="/img.jpg" 
                  alt="Thomas Anime Avatar" 
                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                />
