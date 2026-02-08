@@ -7,61 +7,67 @@ const MatrixBackground = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
 
-    // 1. Configurar tamaño completo
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    let columns = [];
+    let drops = [];
     
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    // 2. Caracteres: Katakana + Números + Tu Nombre
+    // Configuración
+    const fontSize = 16;
     const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
     const nums = '0123456789';
     const extra = 'DATA-CODE-THOMAS-DEV-⚡'; 
     const alphabet = katakana + nums + extra;
 
-    // 3. Configuración de columnas
-    const fontSize = 16;
-    const columns = Math.floor(canvas.width / fontSize);
-    
-    // Array para las caídas (una por columna)
-    const drops = new Array(columns).fill(1);
+    // Función maestra de inicialización/re-cálculo
+    const initMatrix = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+      
+      const newColumnsCount = Math.floor(width / fontSize);
+      
+      // Crear nuevas gotas, manteniendo las existentes si es posible para que no "parpadee" todo
+      const newDrops = [];
+      for (let i = 0; i < newColumnsCount; i++) {
+        // Si ya existía una gota ahí, la mantenemos, si no, empieza arriba
+        newDrops[i] = drops[i] || 1; 
+      }
+      drops = newDrops;
+    };
 
-    // 4. Función de dibujo (El Loop)
+    // Inicializar
+    initMatrix();
+
+    // DIBUJAR
     const draw = () => {
-      // Pintar fondo negro semitransparente para dejar rastro (efecto estela)
+      // Fondo semi-transparente para rastro
       ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillRect(0, 0, width, height);
 
-      // Configurar texto
       ctx.fillStyle = '#FAFF00'; // TU AMARILLO NEÓN
       ctx.font = 'bold ' + fontSize + 'px monospace';
 
       for (let i = 0; i < drops.length; i++) {
-        // Elegir caracter aleatorio
         const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-        
-        // Dibujar caracter
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-        // Reiniciar caída aleatoriamente si se sale de la pantalla
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+        if (drops[i] * fontSize > height && Math.random() > 0.975) {
           drops[i] = 0;
         }
-
-        // Mover coordenada Y
         drops[i]++;
       }
     };
 
-    // 5. Iniciar animación a 30fps aprox
     const interval = setInterval(draw, 33);
+
+    // Event Listener mejorado para Resize
+    window.addEventListener('resize', initMatrix);
 
     return () => {
       clearInterval(interval);
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('resize', initMatrix);
     };
   }, []);
 
@@ -69,7 +75,7 @@ const MatrixBackground = () => {
     <canvas
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"
-      style={{ background: '#000000' }} // Fondo base negro por seguridad
+      style={{ background: '#000000' }}
     />
   );
 };
