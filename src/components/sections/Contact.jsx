@@ -32,7 +32,7 @@ const Contact = () => {
                 <h3 className="text-2xl font-mono text-thomas-purple mb-4">USER_FEEDBACK</h3>
                 <p className="text-gray-400 mb-6">Ayúdame a mejorar el sistema.</p>
                 <a 
-                    href="https://forms.gle/TU_LINK_AQUI" 
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSekreJ-1dQo7sjM3RBuLTKr0y-EwpaixMi4ltG-S6MZ74Dc5A/viewform?usp=publish-editor" 
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block px-8 py-3 bg-thomas-purple text-white font-bold rounded hover:shadow-[0_0_20px_#800080] transition-all"
