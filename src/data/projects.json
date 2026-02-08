@@ -1,57 +1,57 @@
 [
   {
     "id": "01",
-    "title": "GERICARE: HEALTH ECOSYSTEM",
-    "description": "Arquitectura de misión crítica para salud geriátrica. Backend robusto en Azure, frontend de alta fidelidad y gestión de datos sensible.",
-    "tech": ["React", "Azure Services", "Node.js", "SQL Server"],
+    "title": "GERICARE: FULL-STACK HEALTH SYSTEM",
+    "description": "El núcleo de mi trabajo backend. Gestión geriátrica de alta complejidad con arquitectura escalable en Azure y seguridad de datos nivel enterprise.",
+    "tech": ["React", "Azure", "Node.js", "SQL Server", "Architecture"],
     "link": "https://gericare-web-2026-beh2e0ajecf3h4a4.westus3-01.azurewebsites.net/",
     "featured": true
   },
   {
     "id": "02",
-    "title": "BAD APPLE: MAMBO/MIKU EDITION",
-    "description": "Motor de renderizado y sincronización multimedia avanzada con integración de Teto y Miku. Estética visual extrema.",
-    "tech": ["JavaScript", "Canvas API", "Multimedia Sync"],
+    "title": "BAD APPLE: MULTI-SOURCE ENGINE",
+    "description": "Sincronización multimedia de alto rendimiento. Integración de audio-video para Mambo, Miku y Teto con optimización de frames.",
+    "tech": ["Canvas API", "AudioContext", "JavaScript", "Optimization"],
     "link": "https://bad-apple-server-thomas-ahdrddfnazf8gqg0.eastus2-01.azurewebsites.net/",
     "featured": false
   },
   {
     "id": "03",
-    "title": "BAD APPLE: SERVER ENGINE",
-    "description": "Infraestructura de servidor optimizada para streaming de frames y procesamiento de audio en tiempo real.",
-    "tech": ["Azure App Service", "API Rest", "Python"],
+    "title": "BAD APPLE: CLOUD INFRASTRUCTURE",
+    "description": "El motor detrás del caos. Servidor de alta disponibilidad en Azure para el despliegue de microservicios multimedia.",
+    "tech": ["Azure App Service", "Python", "API Rest", "DevOps"],
     "link": "https://bad-apple-server-thomas-ahdrddfnazf8gqg0.eastus2-01.azurewebsites.net/",
     "featured": false
   },
   {
     "id": "04",
-    "title": "HARUI: SYSTEM OVERRIDE",
-    "description": "Interfaz de usuario experimental con enfoque en micro-interacciones y animaciones complejas.",
-    "tech": ["Framer Motion", "React", "GSAP"],
+    "title": "HARUI: EXPERIMENTAL UI",
+    "description": "Laboratorio de interfaces reactivas. Explorando los límites de Framer Motion y la experiencia de usuario inmersiva.",
+    "tech": ["Framer Motion", "React", "Design Systems"],
     "link": "#",
     "featured": false
   },
   {
     "id": "05",
     "title": "AFECTIVAMENTE",
-    "description": "Ecosistema digital especializado en salud mental. UX empático con métricas de seguimiento personalizadas.",
-    "tech": ["Data Analytics", "React", "Cloud Storage"],
+    "description": "Plataforma de bienestar mental. Análisis de datos aplicado a la salud psicológica con interfaces humanas.",
+    "tech": ["Data Analytics", "React", "UX Research"],
     "link": "#",
     "featured": false
   },
   {
     "id": "06",
-    "title": "PREDICTIVE DATA (UNAL)",
-    "description": "Modelado estadístico avanzado y análisis predictivo. Rigor científico aplicado a la toma de decisiones.",
-    "tech": ["Python", "R", "Statistics", "Scikit-Learn"],
+    "title": "ESTADÍSTICA PREDICTIVA (UNAL)",
+    "description": "Modelado matemático y probabilístico. El rigor científico de la Universidad Nacional aplicado al software.",
+    "tech": ["Python", "R", "Statistics", "Machine Learning"],
     "link": "#",
     "featured": false
   },
   {
     "id": "07",
-    "title": "ASSET MANAGEMENT PRO",
-    "description": "Sistema de gestión de inventarios y soporte técnico a gran escala. Arquitectura de datos relacional.",
-    "tech": ["SQL", "Java", "Backend Architecture"],
+    "title": "SISTEMA DE GESTIÓN DE ACTIVOS",
+    "description": "Control de inventarios y soporte técnico profesional. Mi base sólida en lógica de negocio y bases de datos.",
+    "tech": ["Java", "SQL Server", "Backend Architecture"],
     "link": "#",
     "featured": false
   }
