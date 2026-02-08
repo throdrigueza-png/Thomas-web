@@ -1,25 +1,57 @@
 [
   {
     "id": "01",
-    "title": "GeriCare: Health Management",
-    "description": "Plataforma integral para gestión geriátrica. Arquitectura escalable y UX de alta fidelidad.",
-    "tech": ["React", "Azure", "Tailwind", "Node.js"],
+    "title": "GERICARE: HEALTH ECOSYSTEM",
+    "description": "Arquitectura de misión crítica para salud geriátrica. Backend robusto en Azure, frontend de alta fidelidad y gestión de datos sensible.",
+    "tech": ["React", "Azure Services", "Node.js", "SQL Server"],
     "link": "https://gericare-web-2026-beh2e0ajecf3h4a4.westus3-01.azurewebsites.net/",
     "featured": true
   },
   {
     "id": "02",
-    "title": "Bad Apple: Multi-Source Engine",
-    "description": "Sincronización de audio y video con Mambo, Miku y Teto. Optimizado para alto rendimiento.",
-    "tech": ["JavaScript", "Azure App Service", "Multimedia Engine"],
+    "title": "BAD APPLE: MAMBO/MIKU EDITION",
+    "description": "Motor de renderizado y sincronización multimedia avanzada con integración de Teto y Miku. Estética visual extrema.",
+    "tech": ["JavaScript", "Canvas API", "Multimedia Sync"],
     "link": "https://bad-apple-server-thomas-ahdrddfnazf8gqg0.eastus2-01.azurewebsites.net/",
     "featured": false
   },
   {
     "id": "03",
-    "title": "Predictive Data Analytics",
-    "description": "Modelado estadístico avanzado utilizando rigor matemático para insights de negocio.",
-    "tech": ["Python", "SQL", "Scikit-Learn", "Pandas"],
+    "title": "BAD APPLE: SERVER ENGINE",
+    "description": "Infraestructura de servidor optimizada para streaming de frames y procesamiento de audio en tiempo real.",
+    "tech": ["Azure App Service", "API Rest", "Python"],
+    "link": "https://bad-apple-server-thomas-ahdrddfnazf8gqg0.eastus2-01.azurewebsites.net/",
+    "featured": false
+  },
+  {
+    "id": "04",
+    "title": "HARUI: SYSTEM OVERRIDE",
+    "description": "Interfaz de usuario experimental con enfoque en micro-interacciones y animaciones complejas.",
+    "tech": ["Framer Motion", "React", "GSAP"],
+    "link": "#",
+    "featured": false
+  },
+  {
+    "id": "05",
+    "title": "AFECTIVAMENTE",
+    "description": "Ecosistema digital especializado en salud mental. UX empático con métricas de seguimiento personalizadas.",
+    "tech": ["Data Analytics", "React", "Cloud Storage"],
+    "link": "#",
+    "featured": false
+  },
+  {
+    "id": "06",
+    "title": "PREDICTIVE DATA (UNAL)",
+    "description": "Modelado estadístico avanzado y análisis predictivo. Rigor científico aplicado a la toma de decisiones.",
+    "tech": ["Python", "R", "Statistics", "Scikit-Learn"],
+    "link": "#",
+    "featured": false
+  },
+  {
+    "id": "07",
+    "title": "ASSET MANAGEMENT PRO",
+    "description": "Sistema de gestión de inventarios y soporte técnico a gran escala. Arquitectura de datos relacional.",
+    "tech": ["SQL", "Java", "Backend Architecture"],
     "link": "#",
     "featured": false
   }
