@@ -4,40 +4,49 @@
 
 :root {
   --neon-yellow: #FAFF00;
+  --bg-black: #000000;
 }
 
 body {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--bg-black);
+  color: #ffffff;
+  margin: 0;
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
-  cursor: crosshair;
+  cursor: crosshair; /* Cursor estilo gamer */
 }
 
-/* --- EFECTO SCANLINE (Ciberpunk Puro) --- */
-body::before {
-  content: " ";
-  display: block;
-  position: fixed;
-  top: 0; left: 0; bottom: 0; right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-              linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-  z-index: 100;
-  background-size: 100% 2px, 3px 100%;
-  pointer-events: none;
+/* Scrollbar personalizada Amarillo Neón */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--neon-yellow);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #fff;
+  box-shadow: 0 0 10px var(--neon-yellow);
 }
 
-/* --- GLITCH ANIMATION --- */
+/* --- ANIMACIÓN GLITCH (Para el Título) --- */
 .glitch {
   position: relative;
-  display: inline-block;
+  color: white;
 }
 
-.glitch::before, .glitch::after {
+.glitch::before,
+.glitch::after {
   content: attr(data-text);
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: black;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000; /* Importante para cortar el texto */
 }
 
 .glitch::before {
@@ -50,23 +59,31 @@ body::before {
 .glitch::after {
   left: -2px;
   text-shadow: -2px 0 #00fff9, 2px 2px #FAFF00;
-  animation: glitch-anim2 1s infinite linear alternate-reverse;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
 }
 
 @keyframes glitch-anim {
   0% { clip: rect(31px, 9999px, 94px, 0); }
   20% { clip: rect(62px, 9999px, 42px, 0); }
-  /* ... más pasos ... */
-  100% { clip: rect(89px, 9999px, 98px, 0); }
+  40% { clip: rect(16px, 9999px, 78px, 0); }
+  60% { clip: rect(89px, 9999px, 13px, 0); }
+  80% { clip: rect(24px, 9999px, 56px, 0); }
+  100% { clip: rect(46px, 9999px, 19px, 0); }
 }
 
 @keyframes glitch-anim2 {
-  0% { clip: rect(10px, 9999px, 85px, 0); }
-  100% { clip: rect(80px, 9999px, 20px, 0); }
+  0% { clip: rect(12px, 9999px, 56px, 0); }
+  20% { clip: rect(82px, 9999px, 19px, 0); }
+  40% { clip: rect(26px, 9999px, 93px, 0); }
+  60% { clip: rect(64px, 9999px, 34px, 0); }
+  80% { clip: rect(13px, 9999px, 77px, 0); }
+  100% { clip: rect(98px, 9999px, 45px, 0); }
 }
 
+/* Utilidad para tarjetas */
 .glass-card {
-  background: rgba(10, 10, 10, 0.8);
+  background: rgba(20, 20, 20, 0.7);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }

@@ -6,51 +6,61 @@ import Contact from './components/sections/Contact';
 
 function App() {
   return (
-    // CAMBIO CLAVE: bg-transparent para ver las partículas detrás
-    <div className="relative min-h-screen bg-transparent text-white overflow-hidden selection:bg-neon-yellow selection:text-black">
+    // IMPORTANTE: bg-transparent permite ver el MatrixBackground que está detrás
+    <div className="min-h-screen bg-transparent text-white font-sans selection:bg-neon-yellow selection:text-black overflow-x-hidden">
       
+      {/* 1. LAS PARTÍCULAS (Renderizadas al fondo) */}
       <MatrixBackground />
-      
-      {/* Overlay de ruido estático (Opcional, si te gusta el efecto TV vieja) */}
-      <div className="fixed inset-0 opacity-[0.03] pointer-events-none z-0 bg-[url('https://res.cloudinary.com/dyd911kmh/image/upload/v1640050215/noise_v96sq6.png')]"></div>
 
-      {/* Contenedor principal con Z-Index positivo para estar SOBRE las partículas */}
+      {/* 2. OVERLAY DE RUIDO (Efecto TV Vieja sutil) */}
+      <div className="fixed inset-0 opacity-[0.04] pointer-events-none z-0 bg-[url('https://res.cloudinary.com/dyd911kmh/image/upload/v1640050215/noise_v96sq6.png')]"></div>
+
+      {/* 3. CONTENIDO PRINCIPAL (z-10 para flotar sobre todo) */}
       <div className="relative z-10 container mx-auto px-6">
         
-        {/* HERO */}
-        <section className="min-h-screen flex flex-col items-center justify-center text-center pt-20">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
+        {/* HERO SECTION */}
+        <section className="min-h-screen flex flex-col items-center justify-center text-center pt-10">
+          
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="mb-10 relative group"
+            className="relative mb-10 group"
           >
-            <div className="absolute -inset-4 bg-neon-yellow opacity-20 blur-3xl group-hover:opacity-40 transition-opacity duration-500"></div>
+            {/* MARCO DE NEÓN DESPLAZADO (Estilo Glitch/Cyberpunk) */}
+            <div className="absolute top-3 left-3 w-full h-full border-2 border-neon-yellow z-0 opacity-60 group-hover:opacity-100 transition-opacity"></div>
+            <div className="absolute -inset-2 bg-neon-yellow/20 blur-xl group-hover:bg-neon-yellow/30 transition-colors"></div>
+            
+            {/* FOTO CUADRADA (La que pediste) */}
             <img 
               src="/img.jpg" 
-              className="w-48 h-48 md:w-64 md:h-64 rounded-full border-4 border-neon-yellow object-cover relative z-10 shadow-[0_0_40px_rgba(250,255,0,0.3)]" 
-              alt="Profile"
+              alt="Thomas" 
+              className="relative z-10 w-64 h-64 object-cover border-2 border-white/90 grayscale group-hover:grayscale-0 transition-all duration-500 shadow-2xl"
             />
           </motion.div>
 
-          <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-6 glitch" data-text="THOMAS.DEV">
+          {/* TÍTULO GLITCH */}
+          <h1 className="glitch text-6xl md:text-9xl font-black tracking-tighter mb-6" data-text="THOMAS.DEV">
             THOMAS<span className="text-neon-yellow">.DEV</span>
           </h1>
 
-          <p className="text-neon-yellow font-mono text-sm md:text-xl tracking-[0.3em] uppercase mb-12 border border-neon-yellow/30 px-6 py-2 bg-black/50 backdrop-blur-sm">
-            Estadístico & Desarrollador Full Stack
-          </p>
+          {/* SUBTÍTULO CON ESTILO TERMINAL */}
+          <div className="bg-neon-yellow text-black px-6 py-2 mb-12 transform -skew-x-12 inline-block border-r-4 border-black">
+            <p className="font-mono font-bold tracking-[0.2em] text-sm md:text-lg skew-x-12 uppercase">
+              &lt; Estadístico & Desarrollador Full Stack /&gt;
+            </p>
+          </div>
 
           <motion.button 
-            whileHover={{ scale: 1.05, backgroundColor: "#FAFF00", color: "#000" }}
-            whileTap={{ scale: 0.95 }}
             onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}
-            className="border-2 border-neon-yellow text-neon-yellow px-10 py-4 font-black tracking-widest uppercase text-sm transition-all"
+            whileHover={{ scale: 1.05, boxShadow: "0px 0px 30px #FAFF00" }}
+            whileTap={{ scale: 0.95 }}
+            className="border-2 border-neon-yellow text-neon-yellow px-12 py-4 font-black tracking-widest uppercase hover:bg-neon-yellow hover:text-black transition-all duration-300"
           >
             INITIALIZE SYSTEM_
           </motion.button>
         </section>
 
-        {/* PROYECTOS */}
+        {/* SECCIÓN PROYECTOS */}
         <section id="projects" className="py-32">
           <Projects />
         </section>
@@ -58,15 +68,16 @@ function App() {
         {/* CONTACTO */}
         <Contact />
 
-        {/* FOOTER - CAMBIO CLAVE: Texto visible */}
-        <footer className="py-12 text-center border-t border-white/10 mt-20">
-          <p className="text-white/60 font-mono text-xs uppercase tracking-[0.2em] mb-2">
+        {/* FOOTER (VISIBLE AHORA) */}
+        <footer className="py-12 mt-20 border-t border-white/10 text-center relative z-20 bg-black/80 backdrop-blur-sm">
+          <p className="text-white/70 font-mono text-xs md:text-sm tracking-[0.3em] mb-3 uppercase">
             System Architecture by Thomas Rodriguez
           </p>
-          <p className="text-neon-yellow font-bold text-sm">
+          <p className="text-neon-yellow font-bold text-xs tracking-widest">
             © 2026 ALL RIGHTS RESERVED
           </p>
         </footer>
+
       </div>
     </div>
   );
