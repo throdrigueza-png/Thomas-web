@@ -111,7 +111,7 @@ function App() {
               transition={{ delay: 0.5 }}
             >
               <a 
-                href="https://www.linkedin.com/in/thomas-fernando-rodriguez-anzola-882b8b214/" 
+                href="www.linkedin.com/in/thomas-fernando-rodríguez-anzola-882b8b214" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="cyber-button"
