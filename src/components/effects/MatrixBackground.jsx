@@ -9,17 +9,14 @@ const MatrixBackground = () => {
 
     let width = window.innerWidth;
     let height = window.innerHeight;
-    let columns = [];
     let drops = [];
     
-    // Configuración
     const fontSize = 16;
     const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
     const nums = '0123456789';
     const extra = 'DATA-CODE-THOMAS-DEV-⚡'; 
     const alphabet = katakana + nums + extra;
 
-    // Función maestra de inicialización/re-cálculo
     const initMatrix = () => {
       width = window.innerWidth;
       height = window.innerHeight;
@@ -27,26 +24,21 @@ const MatrixBackground = () => {
       canvas.height = height;
       
       const newColumnsCount = Math.floor(width / fontSize);
-      
-      // Crear nuevas gotas, manteniendo las existentes si es posible para que no "parpadee" todo
       const newDrops = [];
       for (let i = 0; i < newColumnsCount; i++) {
-        // Si ya existía una gota ahí, la mantenemos, si no, empieza arriba
         newDrops[i] = drops[i] || 1; 
       }
       drops = newDrops;
     };
 
-    // Inicializar
     initMatrix();
 
-    // DIBUJAR
     const draw = () => {
-      // Fondo semi-transparente para rastro
+      // El fondo negro es crucial porque con mix-blend-screen se vuelve transparente
       ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
       ctx.fillRect(0, 0, width, height);
 
-      ctx.fillStyle = '#FAFF00'; // TU AMARILLO NEÓN
+      ctx.fillStyle = '#FAFF00'; // Tu amarillo neón
       ctx.font = 'bold ' + fontSize + 'px monospace';
 
       for (let i = 0; i < drops.length; i++) {
@@ -61,8 +53,6 @@ const MatrixBackground = () => {
     };
 
     const interval = setInterval(draw, 33);
-
-    // Event Listener mejorado para Resize
     window.addEventListener('resize', initMatrix);
 
     return () => {
@@ -74,8 +64,8 @@ const MatrixBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"
-      style={{ background: '#000000' }}
+      // TRUCO MAESTRO: mix-blend-screen fusiona el canvas con la foto del prado
+      className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none mix-blend-screen opacity-90"
     />
   );
 };
