@@ -4,54 +4,49 @@ import MatrixBackground from './components/effects/MatrixBackground';
 import Projects from './components/sections/Projects';
 import Contact from './components/sections/Contact';
 
-// IMPORTA TU IMAGEN
-import animeBg from './anime-thomas.jpg'; 
+// ASEGÚRATE DE QUE LA RUTA A TU IMAGEN SEA CORRECTA
+import animeBg from './anime.jpg'; 
 
 function App() {
   return (
-    <div className="relative min-h-screen text-white overflow-x-hidden selection:bg-[#87CEEB] selection:text-black">
+    <div className="relative min-h-screen text-white overflow-x-hidden selection:bg-[#00bfff] selection:text-white">
       
-      {/* --- ESTILOS INYECTADOS DE LOS BOTONES --- */}
+      {/* --- ESTILOS INYECTADOS BOTONES HERO --- */}
       <style>{`
-        .cyber-button {
-          --primary: #87CEEB; /* Cambiado a azul SAO para que combine con el cielo */
-          --shadow-primary: rgba(135, 206, 235, 0.6);
-          font-family: 'Space Mono', monospace;
-          text-transform: uppercase;
-          text-decoration: none;
-          color: #fff;
-          background: rgba(0,0,0,0.5);
-          border: 1px solid var(--primary);
-          padding: 12px 24px;
-          font-size: 14px;
-          position: relative;
-          display: inline-block;
-          letter-spacing: 2px;
+        .anime-btn {
+          background: rgba(255,255,255,0.2);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255,255,255,0.5);
+          color: white;
+          padding: 12px 28px;
+          border-radius: 50px; /* Botones redonditos y modernos */
+          font-weight: 700;
+          letter-spacing: 1px;
           transition: all 0.3s ease;
-          border-radius: 4px;
-          overflow: hidden;
-          z-index: 50;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-        .cyber-button:hover { background: var(--primary); color: #000; box-shadow: 0 0 20px var(--shadow-primary); transform: translateY(-2px); border-color: #fff; font-weight: bold;}
-        .cyber-button::before { content: '< '; margin-right: 5px; opacity: 0.7; }
-        .cyber-button::after { content: ' />'; margin-left: 5px; opacity: 0.7; }
-        
-        /* Brillo sutil para la imagen de perfil */
-        .profile-glow {
-            box-shadow: 0 0 30px rgba(135, 206, 235, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.5);
+        .anime-btn:hover { 
+          background: white; 
+          color: #0f1928; 
+          transform: translateY(-3px);
+          box-shadow: 0 8px 25px rgba(255,255,255,0.5);
+        }
+        .profile-img {
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
         }
       `}</style>
 
-      {/* --- EL FONDO (Tu imagen a full color, sin oscurecer a lo bruto) --- */}
+      {/* --- EL FONDO 100% VISIBLE --- */}
+      {/* Cero capas negras, la imagen brilla con todo su color */}
       <div 
-        className="fixed top-0 left-0 w-full h-full -z-30 bg-cover bg-center bg-no-repeat"
+        className="fixed top-0 left-0 w-full h-full -z-30 bg-cover bg-center bg-no-repeat bg-fixed"
         style={{ backgroundImage: `url(${animeBg})` }}
       />
-      {/* Un oscurecedor MEGA sutil solo para que no deslumbre, casi invisible */}
-      <div className="fixed top-0 left-0 w-full h-full -z-20 bg-black/10" />
 
-      {/* --- LA LLUVIA MATRIX --- */}
-      <MatrixBackground />
+      {/* --- LA LLUVIA MATRIX (Si aún la tienes, te sugiero ponerla muy transparente o quitarla si ensucia mucho la imagen) --- */}
+      <div className="opacity-30">
+        <MatrixBackground />
+      </div>
 
       {/* --- CONTENIDO PRINCIPAL --- */}
       <div className="relative z-10 container mx-auto px-6">
@@ -59,58 +54,49 @@ function App() {
         {/* HERO SECTION */}
         <section className="min-h-screen flex flex-col items-center justify-center text-center pt-10">
           
-          {/* EL CONTENEDOR DE CRISTAL (Aquí ocurre la magia) */}
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="glass-container p-8 md:p-14 flex flex-col items-center max-w-4xl w-full"
+            className="glass-panel p-10 md:p-16 flex flex-col items-center max-w-4xl w-full"
           >
-            {/* Texto de sistema (Hacker/Zenless) */}
-            <div className="mb-6 font-terminal text-[#87CEEB] text-xs md:text-sm tracking-[0.3em] uppercase opacity-90 border-b border-[#87CEEB]/30 pb-2">
-              &gt; LINK_START :: USER_THOMAS_AUTHENTICATED
+            {/* Texto decorativo */}
+            <div className="mb-6 font-mono text-white/80 text-xs md:text-sm tracking-[0.2em] border-b border-white/30 pb-2">
+              ✧ SYSTEM_ONLINE : WELCOME_USER ✧
             </div>
 
             {/* FOTO DE PERFIL */}
-            <motion.div 
-              whileHover={{ scale: 1.05 }}
-              className="relative mb-6 group"
-            >
+            <motion.div whileHover={{ scale: 1.05 }} className="relative mb-8 group">
               <img 
-                src="/img.jpg" 
+                src="/img.jpg" /* Reemplaza con tu foto real */
                 alt="Thomas" 
-                className="profile-glow relative z-10 w-48 h-48 md:w-56 md:h-56 object-cover rounded-full border-4 border-white/20 transition-all duration-300"
+                className="profile-img relative z-10 w-48 h-48 md:w-52 md:h-52 object-cover rounded-full border-4 border-white transition-all duration-300"
               />
             </motion.div>
 
-            {/* TÍTULO PRINCIPAL (Fuente SAO) */}
-            <h1 className="font-sao text-5xl md:text-7xl font-bold tracking-wider mb-4 text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
-              THOMAS<span className="text-[#87CEEB]">.DEV</span>
+            {/* TÍTULO */}
+            <h1 className="font-sao text-5xl md:text-7xl font-bold tracking-widest mb-2 text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.4)]">
+              THOMAS<span className="text-[#00bfff]">.DEV</span>
             </h1>
 
-            {/* ETIQUETA / ROL */}
-            <div className="bg-black/40 border-l-4 border-[#87CEEB] px-6 py-2 mb-10 backdrop-blur-sm">
-              <p className="font-terminal text-[#87CEEB] tracking-[0.1em] text-sm md:text-base uppercase">
-                Estadístico // Full Stack Engineer
-              </p>
-            </div>
+            {/* SUBTÍTULO */}
+            <h2 className="text-xl md:text-2xl font-bold text-white/90 mb-10 drop-shadow-md">
+              Estadístico & Full Stack Engineer
+            </h2>
 
             {/* BOTONES */}
             <div className="flex flex-col md:flex-row gap-6 items-center">
               <motion.button 
-                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}
-                className="cyber-button"
+                className="anime-btn"
               >
-                SYSTEM_PROJECTS
+                VER PROYECTOS
               </motion.button>
 
-              <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}>
-                <a href="https://www.linkedin.com/in/thomas-fernando-rodriguez-anzola-882b8b214/" target="_blank" rel="noopener noreferrer" className="cyber-button">
-                  CONNECT_LINKEDIN
-                </a>
-              </motion.div>
+              <a href="https://www.linkedin.com/in/thomas-fernando-rodriguez-anzola-882b8b214/" target="_blank" rel="noopener noreferrer" className="anime-btn">
+                LINKEDIN // CONECTAR
+              </a>
             </div>
           </motion.div>
         </section>
@@ -122,16 +108,6 @@ function App() {
 
         {/* CONTACTO */}
         <Contact />
-
-        {/* FOOTER */}
-        <footer className="py-8 mt-20 text-center glass-container rounded-t-3xl rounded-b-none border-b-0 relative overflow-hidden">
-            <p className="font-terminal text-white/70 text-xs tracking-[0.2em] mb-2 uppercase">
-                System Architecture by Thomas Rodriguez
-            </p>
-            <p className="font-sao text-[#87CEEB] font-bold text-sm tracking-widest mt-2 animate-pulse">
-                © 2026 ALICIZATION SIMULATION: ONLINE
-            </p>
-        </footer>
 
       </div>
     </div>
