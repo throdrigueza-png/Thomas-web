@@ -4,56 +4,53 @@ import MatrixBackground from './components/effects/MatrixBackground';
 import Projects from './components/sections/Projects';
 import Contact from './components/sections/Contact';
 
-// IMPORTA TU IMAGEN AQUÍ (Debe estar en la misma carpeta que App.js)
+// IMPORTA TU IMAGEN
 import animeBg from './anime-thomas.jpg'; 
 
 function App() {
   return (
-    // CONTENEDOR PRINCIPAL
-    <div className="relative min-h-screen text-white overflow-x-hidden selection:bg-[#FAFF00] selection:text-black font-mono">
+    <div className="relative min-h-screen text-white overflow-x-hidden selection:bg-[#87CEEB] selection:text-black">
       
-      {/* --- ESTILOS DEL BOTÓN LINKEDIN --- */}
+      {/* --- ESTILOS INYECTADOS DE LOS BOTONES --- */}
       <style>{`
         .cyber-button {
-          --primary: #FAFF00;
-          --shadow-primary: #faff00aa;
-          font-family: 'Courier New', monospace;
+          --primary: #87CEEB; /* Cambiado a azul SAO para que combine con el cielo */
+          --shadow-primary: rgba(135, 206, 235, 0.6);
+          font-family: 'Space Mono', monospace;
           text-transform: uppercase;
           text-decoration: none;
-          color: var(--primary);
-          background: rgba(0,0,0,0.6);
+          color: #fff;
+          background: rgba(0,0,0,0.5);
           border: 1px solid var(--primary);
-          padding: 15px 30px;
+          padding: 12px 24px;
           font-size: 14px;
-          font-weight: bold;
           position: relative;
           display: inline-block;
           letter-spacing: 2px;
           transition: all 0.3s ease;
-          backdrop-filter: blur(5px);
+          border-radius: 4px;
           overflow: hidden;
           z-index: 50;
         }
-        .cyber-button:hover { background: var(--primary); color: #000; box-shadow: 0 0 30px var(--shadow-primary); transform: scale(1.05) translateY(-2px); border-color: #fff; }
-        .cyber-button::before { content: '[ '; margin-right: 5px; opacity: 0.5; transition: opacity 0.3s; }
-        .cyber-button::after { content: ' ]'; margin-left: 5px; opacity: 0.5; transition: opacity 0.3s; }
-        .cyber-button:hover::before, .cyber-button:hover::after { opacity: 1; font-weight: 900; }
-        .cyber-tag { position: absolute; right: 4px; bottom: 2px; font-size: 8px; color: var(--primary); opacity: 0.6; }
-        .cyber-button:hover .cyber-tag { color: #000; font-weight: bold; }
+        .cyber-button:hover { background: var(--primary); color: #000; box-shadow: 0 0 20px var(--shadow-primary); transform: translateY(-2px); border-color: #fff; font-weight: bold;}
+        .cyber-button::before { content: '< '; margin-right: 5px; opacity: 0.7; }
+        .cyber-button::after { content: ' />'; margin-left: 5px; opacity: 0.7; }
+        
+        /* Brillo sutil para la imagen de perfil */
+        .profile-glow {
+            box-shadow: 0 0 30px rgba(135, 206, 235, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.5);
+        }
       `}</style>
 
-      {/* --- CAPAS DE FONDO (EL PRADO + MATRIX) --- */}
-      
-      {/* Capa -30: Tu imagen del prado a pantalla completa y fija */}
+      {/* --- EL FONDO (Tu imagen a full color, sin oscurecer a lo bruto) --- */}
       <div 
-        className="fixed top-0 left-0 w-full h-full -z-30 bg-cover bg-center"
+        className="fixed top-0 left-0 w-full h-full -z-30 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${animeBg})` }}
       />
-      
-      {/* Capa -20: Oscurecedor. Necesario para que las letras se lean sobre el prado brillante */}
-      <div className="fixed top-0 left-0 w-full h-full -z-20 bg-black/60" />
+      {/* Un oscurecedor MEGA sutil solo para que no deslumbre, casi invisible */}
+      <div className="fixed top-0 left-0 w-full h-full -z-20 bg-black/10" />
 
-      {/* Capa 0: Matrix Background */}
+      {/* --- LA LLUVIA MATRIX --- */}
       <MatrixBackground />
 
       {/* --- CONTENIDO PRINCIPAL --- */}
@@ -62,57 +59,60 @@ function App() {
         {/* HERO SECTION */}
         <section className="min-h-screen flex flex-col items-center justify-center text-center pt-10">
           
-          {/* Pequeño texto de "lore" */}
+          {/* EL CONTENEDOR DE CRISTAL (Aquí ocurre la magia) */}
           <motion.div 
-             initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-             className="mb-4 text-[#FAFF00] text-xs md:text-sm tracking-[0.3em] uppercase opacity-70"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="glass-container p-8 md:p-14 flex flex-col items-center max-w-4xl w-full"
           >
-            &gt; SYSTEM_ENVIRONMENT: NATURE_SIMULATION_LOADED
-          </motion.div>
+            {/* Texto de sistema (Hacker/Zenless) */}
+            <div className="mb-6 font-terminal text-[#87CEEB] text-xs md:text-sm tracking-[0.3em] uppercase opacity-90 border-b border-[#87CEEB]/30 pb-2">
+              &gt; LINK_START :: USER_THOMAS_AUTHENTICATED
+            </div>
 
-          {/* FOTO DE PERFIL */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8 }}
-            className="relative mb-8 group"
-          >
-            <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#FAFF00] to-[#00ffcc] opacity-30 group-hover:opacity-100 blur transition duration-500 animate-spin-slow"></div>
-            <img 
-              src="/img.jpg" 
-              alt="Thomas" 
-              className="relative z-10 w-56 h-56 object-cover rounded-full border-2 border-white/30 grayscale group-hover:grayscale-0 transition-all duration-500 shadow-[0_0_40px_rgba(250,255,0,0.3)]"
-            />
-          </motion.div>
-
-          <h1 className="text-5xl md:text-8xl font-black tracking-tighter mb-4 text-white drop-shadow-[0_5px_15px_rgba(0,0,0,0.8)]">
-            THOMAS<span className="text-[#FAFF00] animate-pulse">.DEV</span>
-          </h1>
-
-          {/* Etiqueta con efecto Glassmorphism */}
-          <div className="glass-panel text-[#FAFF00] px-8 py-3 mb-10 transform -skew-x-12 inline-block">
-            <p className="font-mono font-bold tracking-[0.2em] text-sm md:text-lg skew-x-12 uppercase">
-              &lt; Estadístico & Full Stack /&gt;
-            </p>
-          </div>
-
-          <div className="flex flex-col md:flex-row gap-6 items-center">
-            {/* BOTÓN SISTEMA (Glassmorphism) */}
-            <motion.button 
-              whileHover={{ scale: 1.05, backgroundColor: "#FAFF00", color: "#000" }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}
-              className="glass-panel text-[#FAFF00] px-10 py-4 font-black tracking-widest uppercase transition-colors duration-300 cursor-pointer"
+            {/* FOTO DE PERFIL */}
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="relative mb-6 group"
             >
-              INITIALIZE SYSTEM_
-            </motion.button>
-
-            {/* BOTÓN LINKEDIN */}
-            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }}>
-              <a href="https://www.linkedin.com/in/thomas-fernando-rodriguez-anzola-882b8b214/" target="_blank" rel="noopener noreferrer" className="cyber-button">
-                _CONNECT :: LINKEDIN_
-                <span className="cyber-tag">R25</span>
-              </a>
+              <img 
+                src="/img.jpg" 
+                alt="Thomas" 
+                className="profile-glow relative z-10 w-48 h-48 md:w-56 md:h-56 object-cover rounded-full border-4 border-white/20 transition-all duration-300"
+              />
             </motion.div>
-          </div>
+
+            {/* TÍTULO PRINCIPAL (Fuente SAO) */}
+            <h1 className="font-sao text-5xl md:text-7xl font-bold tracking-wider mb-4 text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+              THOMAS<span className="text-[#87CEEB]">.DEV</span>
+            </h1>
+
+            {/* ETIQUETA / ROL */}
+            <div className="bg-black/40 border-l-4 border-[#87CEEB] px-6 py-2 mb-10 backdrop-blur-sm">
+              <p className="font-terminal text-[#87CEEB] tracking-[0.1em] text-sm md:text-base uppercase">
+                Estadístico // Full Stack Engineer
+              </p>
+            </div>
+
+            {/* BOTONES */}
+            <div className="flex flex-col md:flex-row gap-6 items-center">
+              <motion.button 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}
+                className="cyber-button"
+              >
+                SYSTEM_PROJECTS
+              </motion.button>
+
+              <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}>
+                <a href="https://www.linkedin.com/in/thomas-fernando-rodriguez-anzola-882b8b214/" target="_blank" rel="noopener noreferrer" className="cyber-button">
+                  CONNECT_LINKEDIN
+                </a>
+              </motion.div>
+            </div>
+          </motion.div>
         </section>
 
         {/* PROYECTOS */}
@@ -124,13 +124,12 @@ function App() {
         <Contact />
 
         {/* FOOTER */}
-        <footer className="py-12 mt-20 border-t border-[#FAFF00]/30 text-center glass-panel relative overflow-hidden rounded-t-3xl">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[2px] bg-gradient-to-r from-transparent via-[#FAFF00] to-transparent"></div>
-            <p className="text-white/80 font-mono text-xs tracking-[0.2em] mb-2 uppercase">
+        <footer className="py-8 mt-20 text-center glass-container rounded-t-3xl rounded-b-none border-b-0 relative overflow-hidden">
+            <p className="font-terminal text-white/70 text-xs tracking-[0.2em] mb-2 uppercase">
                 System Architecture by Thomas Rodriguez
             </p>
-            <p style={{ color: '#FAFF00' }} className="font-bold text-xs tracking-widest mt-2 animate-pulse">
-                © 2026 SIMULATION: ONLINE
+            <p className="font-sao text-[#87CEEB] font-bold text-sm tracking-widest mt-2 animate-pulse">
+                © 2026 ALICIZATION SIMULATION: ONLINE
             </p>
         </footer>
 
