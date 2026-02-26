@@ -1,44 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Nunito:wght@400;600;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --neon-yellow: #FAFF00;
-  --sao-blue: #87CEEB;
-  --bocchi-pink: #FFB6C1;
+  --sao-blue: #00bfff;
+  --sao-light: #e0f7fa;
+  --glass-border: rgba(255, 255, 255, 0.4);
 }
 
 body {
-  background-color: #050505; 
+  /* Fondo base por si la imagen tarda en cargar, un azul muy claro */
+  background-color: #87CEEB; 
   color: #ffffff;
   margin: 0;
   overflow-x: hidden;
-  /* El cursor en forma de cruz le da el toque shooter/hacker */
-  cursor: crosshair; 
+  font-family: 'Nunito', sans-serif; /* Fuente súper legible y amigable (anime style) */
 }
 
-/* Scrollbar adaptada */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: rgba(0,0,0,0.8); }
-::-webkit-scrollbar-thumb { background: var(--sao-blue); border-radius: 4px; }
+/* --- ESTILO CRISTAL PREMIUM (Light Glassmorphism) --- */
+/* Esto es lo que hará que se lea el texto SIN oscurecer tu fondo */
+.glass-panel {
+  background: rgba(15, 25, 40, 0.25); /* Un tono azul oscuro hiper transparente */
+  backdrop-filter: blur(16px); /* Difuminado fuerte para contraste */
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border); /* Borde blanquito */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2), inset 0 0 20px rgba(255,255,255,0.1);
+  border-radius: 24px;
+}
 
-/* --- FUENTES CUSTOM --- */
+/* --- FUENTES --- */
 .font-sao { font-family: 'Rajdhani', sans-serif; }
-.font-terminal { font-family: 'Space Mono', monospace; }
+.font-mono { font-family: 'Space Mono', monospace; }
 
-/* --- CONTENEDOR DE CRISTAL OP (Glassmorphism) --- */
-.glass-container {
-  background: rgba(10, 15, 20, 0.35); /* Muy transparente para ver el fondo */
-  backdrop-filter: blur(10px); /* El difuminado mágico */
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Borde blanco sutil */
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(135, 206, 235, 0.15); /* Sombra externa + brillo azul interno */
-  border-radius: 24px; /* Bordes redondeados modernos */
-}
-
-/* Hacemos que la lluvia sea más transparente para que no estorbe */
-canvas {
-  opacity: 0.55; 
-}
+/* Scrollbar estética */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.5); border-radius: 10px; }
