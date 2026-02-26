@@ -1,45 +1,46 @@
+import React from 'react';
 import { motion } from "framer-motion";
 
 const Contact = () => {
   return (
-    <section className="py-20 px-4 relative z-10 bg-gradient-to-t from-black via-transparent to-transparent">
+    <section className="py-20 px-4 relative z-10">
       <div className="max-w-4xl mx-auto text-center">
         
         <motion.h2 
-          initial={{ scale: 0.5, opacity: 0 }}
+          initial={{ scale: 0.9, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
-          className="text-4xl font-bold mb-8 text-white"
+          className="text-4xl md:text-5xl font-sao font-bold mb-12 text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
         >
-          READY TO COLLABORATE?
+          ¿INICIAMOS LA CONEXIÓN?
         </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-8">
             {/* Tarjeta CV */}
-            <div className="p-8 bg-gray-900 bg-opacity-60 border border-hacker-green rounded-xl backdrop-blur">
-                <h3 className="text-2xl font-mono text-hacker-green mb-4">ACCESS_DATA_FILE</h3>
-                <p className="text-gray-400 mb-6">Descarga mi Hoja de Vida completa.</p>
+            <motion.div whileHover={{ y: -5 }} className="p-8 glass-panel flex flex-col items-center justify-center">
+                <h3 className="text-2xl font-sao font-bold text-[#00bfff] mb-2 drop-shadow-sm">PERFIL DE USUARIO</h3>
+                <p className="text-gray-100 mb-6 font-medium">Descarga mi Hoja de Vida completa [PDF].</p>
                 <a 
                     href="/cv.pdf" 
                     download="Thomas_Rodriguez_CV.pdf"
-                    className="inline-block px-8 py-3 bg-hacker-green text-white font-bold rounded hover:shadow-[0_0_20px_#00FF00] transition-all"
+                    className="inline-block px-8 py-3 bg-white text-blue-900 font-bold rounded-full shadow-[0_0_20px_rgba(255,255,255,0.5)] hover:shadow-[0_0_30px_rgba(255,255,255,0.8)] transition-all hover:scale-105"
                 >
-                    DOWNLOAD CV [PDF]
+                    DOWNLOAD_CV
                 </a>
-            </div>
+            </motion.div>
 
             {/* Tarjeta Encuesta */}
-            <div className="p-8 bg-gray-900 bg-opacity-60 border border-thomas-purple rounded-xl backdrop-blur">
-                <h3 className="text-2xl font-mono text-thomas-purple mb-4">USER_FEEDBACK</h3>
-                <p className="text-gray-400 mb-6">Ayúdame a mejorar el sistema.</p>
+            <motion.div whileHover={{ y: -5 }} className="p-8 glass-panel flex flex-col items-center justify-center">
+                <h3 className="text-2xl font-sao font-bold text-[#ffb6c1] mb-2 drop-shadow-sm">FEEDBACK DEL SISTEMA</h3>
+                <p className="text-gray-100 mb-6 font-medium">Ayúdame a mejorar la interfaz.</p>
                 <a 
                     href="https://docs.google.com/forms/d/e/1FAIpQLSekreJ-1dQo7sjM3RBuLTKr0y-EwpaixMi4ltG-S6MZ74Dc5A/viewform?usp=publish-editor" 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block px-8 py-3 bg-thomas-purple text-white font-bold rounded hover:shadow-[0_0_20px_#800080] transition-all"
+                    className="inline-block px-8 py-3 bg-[#ffb6c1] text-pink-900 font-bold rounded-full shadow-[0_0_20px_rgba(255,182,193,0.5)] hover:shadow-[0_0_30px_rgba(255,182,193,0.8)] transition-all hover:scale-105"
                 >
-                    START SURVEY
+                    START_SURVEY
                 </a>
-            </div>
+            </motion.div>
         </div>
       </div>
     </section>
