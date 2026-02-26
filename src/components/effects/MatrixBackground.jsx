@@ -14,7 +14,7 @@ const MatrixBackground = () => {
     const fontSize = 16;
     const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
     const nums = '0123456789';
-    const extra = 'DATA-CODE-THOMAS-DEV-⚡'; 
+    const extra = 'SYS-LINK-SAO-DEV-⚡'; 
     const alphabet = katakana + nums + extra;
 
     const initMatrix = () => {
@@ -34,11 +34,17 @@ const MatrixBackground = () => {
     initMatrix();
 
     const draw = () => {
-      // El fondo negro es crucial porque con mix-blend-screen se vuelve transparente
+      // El fondo transparente para que deje estela
       ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
       ctx.fillRect(0, 0, width, height);
 
-      ctx.fillStyle = '#FAFF00'; // Tu amarillo neón
+      // --- DEGRADADO ÉPICO (Azul Cielo a Verde Prado) ---
+      const gradient = ctx.createLinearGradient(0, 0, 0, height);
+      gradient.addColorStop(0, 'rgba(135, 206, 235, 0.9)'); // Azul SAO arriba
+      gradient.addColorStop(0.6, 'rgba(144, 238, 144, 0.9)'); // Transición a verde en el centro
+      gradient.addColorStop(1, 'rgba(50, 205, 50, 0.9)'); // Verde pasto abajo
+
+      ctx.fillStyle = gradient; 
       ctx.font = 'bold ' + fontSize + 'px monospace';
 
       for (let i = 0; i < drops.length; i++) {
@@ -52,7 +58,7 @@ const MatrixBackground = () => {
       }
     };
 
-    const interval = setInterval(draw, 33);
+    const interval = setInterval(draw, 35);
     window.addEventListener('resize', initMatrix);
 
     return () => {
@@ -64,8 +70,7 @@ const MatrixBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      // TRUCO MAESTRO: mix-blend-screen fusiona el canvas con la foto del prado
-      className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none mix-blend-screen opacity-90"
+      className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none mix-blend-screen"
     />
   );
 };
