@@ -1,36 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
   --neon-yellow: #FAFF00;
+  --sao-blue: #87CEEB;
+  --bocchi-pink: #FFB6C1;
 }
 
 body {
-  /* Fondo base oscuro por si la imagen tarda en cargar */
   background-color: #050505; 
   color: #ffffff;
   margin: 0;
   overflow-x: hidden;
+  /* El cursor en forma de cruz le da el toque shooter/hacker */
   cursor: crosshair; 
 }
 
-/* Scrollbar personalizada */
-::-webkit-scrollbar { 
-  width: 8px; 
-}
-::-webkit-scrollbar-track { 
-  background: #000; 
-}
-::-webkit-scrollbar-thumb { 
-  background: var(--neon-yellow); 
+/* Scrollbar adaptada */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.8); }
+::-webkit-scrollbar-thumb { background: var(--sao-blue); border-radius: 4px; }
+
+/* --- FUENTES CUSTOM --- */
+.font-sao { font-family: 'Rajdhani', sans-serif; }
+.font-terminal { font-family: 'Space Mono', monospace; }
+
+/* --- CONTENEDOR DE CRISTAL OP (Glassmorphism) --- */
+.glass-container {
+  background: rgba(10, 15, 20, 0.35); /* Muy transparente para ver el fondo */
+  backdrop-filter: blur(10px); /* El difuminado mágico */
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Borde blanco sutil */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(135, 206, 235, 0.15); /* Sombra externa + brillo azul interno */
+  border-radius: 24px; /* Bordes redondeados modernos */
 }
 
-/* Clases de cristal (Glassmorphism) para la interfaz flotante */
-.glass-panel {
-  background: rgba(10, 15, 10, 0.4); /* Un negro-verdoso muy sutil y transparente */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(250, 255, 0, 0.15);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+/* Hacemos que la lluvia sea más transparente para que no estorbe */
+canvas {
+  opacity: 0.55; 
 }
