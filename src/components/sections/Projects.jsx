@@ -1,12 +1,12 @@
 import React from 'react';
 import projectsData from '../../data/projects.json';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 
 const Projects = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 relative z-10">
       {projectsData.map((project) => (
-        <motion.div
+        <Motion.div
           key={project.id}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -69,7 +69,7 @@ const Projects = () => {
             <span>Ejecutar_Link</span>
             <span className="text-lg leading-none transform group-hover:translate-x-1 transition-transform">→</span>
           </a>
-        </motion.div>
+        </Motion.div>
       ))}
     </div>
   );
