@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 const Contact = () => {
   return (
@@ -7,18 +7,18 @@ const Contact = () => {
       <div className="max-w-4xl mx-auto text-center">
         
         {/* Título Principal (Se queda blanco con sombra para resaltar sobre el fondo de la imagen) */}
-        <motion.h2 
+        <Motion.h2 
           initial={{ scale: 0.9, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
           viewport={{ once: true }}
           className="text-4xl md:text-5xl font-sao font-bold mb-12 text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.6)]"
         >
           ¿INICIAMOS LA CONEXIÓN?
-        </motion.h2>
+        </Motion.h2>
 
         <div className="grid md:grid-cols-2 gap-8">
             {/* --- TARJETA CV (MILKY GLASS) --- */}
-            <motion.div 
+            <Motion.div 
               whileHover={{ y: -8, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               className="group relative p-8 flex flex-col items-center justify-center overflow-hidden transition-all duration-300 bg-white/40 backdrop-blur-xl border border-white/70 rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_40px_rgba(0,191,255,0.25)] hover:bg-white/50 hover:border-white"
@@ -36,10 +36,10 @@ const Contact = () => {
                 >
                     DOWNLOAD_CV
                 </a>
-            </motion.div>
+            </Motion.div>
 
             {/* --- TARJETA ENCUESTA (MILKY GLASS) --- */}
-            <motion.div 
+            <Motion.div 
               whileHover={{ y: -8, scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               className="group relative p-8 flex flex-col items-center justify-center overflow-hidden transition-all duration-300 bg-white/40 backdrop-blur-xl border border-white/70 rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_40px_rgba(255,182,193,0.4)] hover:bg-white/50 hover:border-white"
@@ -58,7 +58,7 @@ const Contact = () => {
                 >
                     START_SURVEY
                 </a>
-            </motion.div>
+            </Motion.div>
         </div>
       </div>
     </section>
