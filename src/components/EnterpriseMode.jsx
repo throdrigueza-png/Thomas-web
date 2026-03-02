@@ -4,6 +4,7 @@ import Particles from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
 import projectsData from '../data/projects.json';
 import profileData from '../data/profile.json';
+import MatrixBackground from './effects/MatrixBackground';
 
 /* ── Cosmos particles config ── */
 const particlesOptions = {
@@ -138,6 +139,16 @@ const EnterpriseMode = () => {
           className="w-full h-full"
         />
       </div>
+
+      {/* Matrix rain — hidden by default; revealed only inside the flashlight circle */}
+      <MatrixBackground
+        style={{
+          zIndex: 1,
+          maskImage: `radial-gradient(circle 220px at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 85%)`,
+          WebkitMaskImage: `radial-gradient(circle 220px at ${mousePos.x}px ${mousePos.y}px, black 0%, transparent 85%)`,
+          mixBlendMode: 'screen',
+        }}
+      />
 
       {/* Flashlight cursor effect */}
       <div

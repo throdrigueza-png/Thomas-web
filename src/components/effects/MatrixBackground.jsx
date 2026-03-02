@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-const MatrixBackground = () => {
+const MatrixBackground = ({ style }) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -70,7 +70,8 @@ const MatrixBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none mix-blend-screen"
+      className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"
+      style={style}
     />
   );
 };
