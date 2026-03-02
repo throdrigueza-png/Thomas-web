@@ -289,7 +289,7 @@ const GamingMode = () => {
       <div className="relative z-10 flex justify-center pt-16 pb-1 sm:pt-20">
         <img
           src={animeThomas}
-          alt="Thomas Anime Band"
+          alt="Thomas Anime Banner"
           className="h-28 sm:h-36 md:h-44 object-contain drop-shadow-[0_0_18px_rgba(250,255,0,0.55)]"
         />
       </div>
