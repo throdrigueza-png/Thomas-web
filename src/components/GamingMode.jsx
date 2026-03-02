@@ -1,6 +1,7 @@
-import React, { useRef } from 'react';
-import { motion as Motion, useScroll, useTransform } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion as Motion, AnimatePresence } from 'framer-motion';
 import projectsData from '../data/projects.json';
+import animeThomas from '../anime-thomas.jpg';
 
 /* ── Neon colour tokens ── */
 const NEON_YELLOW = '#FAFF00';
@@ -166,11 +167,12 @@ const LevelBox = ({ project, index }) => {
   );
 };
 
-/* ── Player avatar ── */
-const Player = () => (
+/* ── Player avatar — busito rosa, clickable ── */
+const Player = ({ onClick }) => (
   <div
-    className="fixed bottom-20 left-8 z-30 select-none pointer-events-none"
-    title="Thomas.exe"
+    className="flex flex-col items-center cursor-pointer select-none"
+    onClick={onClick}
+    title="¡Tócame para el siguiente proyecto!"
   >
     <Motion.div
       animate={{ y: [0, -6, 0] }}
@@ -188,10 +190,10 @@ const Player = () => (
           className="absolute -top-1.5 left-0.5 w-9 h-3 rounded-t-full"
           style={{ background: '#5D4037' }}
         />
-        {/* body */}
+        {/* body — busito rosa */}
         <div
           className="absolute top-7 left-0 w-10 h-5 rounded-b-sm"
-          style={{ background: '#1565C0' }}
+          style={{ background: '#FF69B4', boxShadow: '0 0 10px #FF69B488' }}
         />
         {/* code icon badge */}
         <div
@@ -216,13 +218,19 @@ const Player = () => (
     >
       THOMAS.EXE
     </p>
+    <p
+      className="text-center font-black text-[8px] uppercase tracking-widest animate-pulse"
+      style={{ color: NEON_PINK }}
+    >
+      TAP →
+    </p>
   </div>
 );
 
 /* ── Floating score indicator ── */
 const ScorePanel = () => (
   <div
-    className="fixed top-20 left-6 z-30 pointer-events-none px-4 py-2 rounded-xl font-mono text-xs"
+    className="absolute top-20 left-4 z-30 pointer-events-none px-4 py-2 rounded-xl font-mono text-xs"
     style={{
       background: 'rgba(0,0,0,0.6)',
       border: `1px solid ${NEON_YELLOW}55`,
@@ -231,120 +239,164 @@ const ScorePanel = () => (
     }}
   >
     <div className="font-black tracking-widest">THOMAS · DEV</div>
-    <div className="text-[10px] mt-0.5 opacity-70">SCROLL TO EXPLORE →</div>
+    <div className="text-[10px] mt-0.5 opacity-70">TAP AVATAR TO EXPLORE</div>
     <div className="text-[10px] mt-0.5" style={{ color: NEON_PINK }}>
       ★ DAVIVIENDA + UNAL
     </div>
   </div>
 );
 
-/* ── Main GamingMode component ── */
-const CARD_WIDTH_WITH_GAP = 280;  // px per card slot including gap
-const PADDING_OFFSET = 400;       // extra leading/trailing padding in the track
-const VIEWPORT_SAFE_MARGIN = 320; // approx visible viewport width offset
+/* ── Carousel slide variants ── */
+const slideVariants = {
+  enter: (dir) => ({ x: dir > 0 ? 420 : -420, opacity: 0 }),
+  center: { x: 0, opacity: 1 },
+  exit: (dir) => ({ x: dir > 0 ? -420 : 420, opacity: 0 }),
+};
 
+/* ── Main GamingMode component — carousel layout ── */
 const GamingMode = () => {
-  const scrollRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: scrollRef });
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
 
-  /* map scroll 0→1 to horizontal translate 0 → -(totalWidth - viewport) */
-  const totalCards = projectsData.length;
-  const scrollWidth = totalCards * CARD_WIDTH_WITH_GAP + PADDING_OFFSET;
+  const nextProject = () => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % projectsData.length);
+  };
 
-  const x = useTransform(scrollYProgress, [0, 1], [0, -(scrollWidth - VIEWPORT_SAFE_MARGIN)]);
+  const prevProject = () => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + projectsData.length) % projectsData.length);
+  };
 
   return (
     <div
-      ref={scrollRef}
-      className="relative w-full"
-      /* tall enough so scroll covers the full side-scroller */
-      style={{ height: `${Math.max(300, totalCards * 60)}vh` }}
+      className="relative w-full min-h-screen flex flex-col overflow-hidden"
+      style={skyStyle}
     >
-      {/* sticky viewport */}
-      <div className="sticky top-0 left-0 w-full h-screen overflow-hidden" style={skyStyle}>
+      {/* background decorations */}
+      <div className="absolute inset-0 pointer-events-none">
+        <StarField />
+        <Cloud x="8%" y="10%" size={1.2} />
+        <Cloud x="35%" y="5%" size={0.8} />
+        <Cloud x="60%" y="12%" size={1.0} />
+        <Cloud x="80%" y="6%" size={1.4} />
+      </div>
 
-        {/* background decorations */}
-        <div className="absolute inset-0 pointer-events-none">
-          <StarField />
-          <Cloud x="8%" y="12%" size={1.2} />
-          <Cloud x="30%" y="6%" size={0.8} />
-          <Cloud x="55%" y="15%" size={1.0} />
-          <Cloud x="75%" y="8%" size={1.5} />
-        </div>
+      {/* score panel */}
+      <ScorePanel />
 
-        {/* score & player */}
-        <ScorePanel />
-        <Player />
-
-        {/* horizontal scrolling track */}
-        <div className="absolute inset-0 flex items-center overflow-hidden">
-          <Motion.div
-            style={{ x }}
-            className="flex items-end gap-14 pl-56 pr-32"
-          >
-            {/* START flag */}
-            <div className="flex-shrink-0 flex flex-col items-center" style={{ marginBottom: 136 }}>
-              <div
-                className="font-black text-lg uppercase tracking-widest"
-                style={{ color: NEON_GREEN, textShadow: `0 0 14px ${NEON_GREEN}` }}
-              >
-                ▶ START
-              </div>
-              <div className="w-0.5 h-16 mt-2" style={{ background: NEON_GREEN, boxShadow: `0 0 8px ${NEON_GREEN}` }} />
-            </div>
-
-            {/* project cards */}
-            {projectsData.map((project, i) => (
-              <LevelBox key={project.id} project={project} index={i} />
-            ))}
-
-            {/* END flag */}
-            <div className="flex-shrink-0 flex flex-col items-center" style={{ marginBottom: 136 }}>
-              <div
-                className="font-black text-lg uppercase tracking-widest"
-                style={{ color: NEON_PINK, textShadow: `0 0 14px ${NEON_PINK}` }}
-              >
-                🏁 END
-              </div>
-              <div className="w-0.5 h-16 mt-2" style={{ background: NEON_PINK, boxShadow: `0 0 8px ${NEON_PINK}` }} />
-            </div>
-          </Motion.div>
-        </div>
-
-        {/* ground strip */}
-        <div
-          className="absolute bottom-0 left-0 right-0 h-16"
-          style={groundStyle}
+      {/* ── anime-thomas.jpg banner ── */}
+      <div className="relative z-10 flex justify-center pt-16 pb-1 sm:pt-20">
+        <img
+          src={animeThomas}
+          alt="Thomas Anime Band"
+          className="h-28 sm:h-36 md:h-44 object-contain drop-shadow-[0_0_18px_rgba(250,255,0,0.55)]"
         />
+      </div>
 
-        {/* progress bar */}
-        <Motion.div
-          className="absolute bottom-16 left-0 h-1"
+      {/* project counter */}
+      <div
+        className="relative z-10 text-center font-mono text-[11px] font-black tracking-widest mb-1"
+        style={{ color: NEON_CYAN }}
+      >
+        LVL {String(currentIndex + 1).padStart(2, '0')} / {String(projectsData.length).padStart(2, '0')}
+      </div>
+
+      {/* ── carousel area ── */}
+      <div className="relative z-10 flex-1 flex items-center justify-center px-4 py-2">
+        {/* prev arrow */}
+        <button
+          onClick={prevProject}
+          aria-label="Proyecto anterior"
+          className="hidden sm:flex items-center justify-center w-10 h-10 rounded-full mr-4 flex-shrink-0 transition-all hover:scale-110"
           style={{
-            scaleX: scrollYProgress,
-            transformOrigin: 'left',
-            background: `linear-gradient(90deg, ${NEON_CYAN}, ${NEON_PINK})`,
-            boxShadow: `0 0 8px ${NEON_CYAN}`,
+            background: 'rgba(0,0,0,0.5)',
+            border: `1.5px solid ${NEON_PINK}66`,
+            color: NEON_PINK,
+            boxShadow: `0 0 12px ${NEON_PINK}44`,
+            fontSize: 20,
+            fontWeight: 900,
           }}
-        />
-
-        {/* contact bar at bottom */}
-        <div
-          className="absolute bottom-0 right-0 flex items-center gap-4 px-6 py-2 text-[10px] font-black uppercase tracking-widest z-10"
-          style={{ color: NEON_YELLOW }}
         >
-          <a
-            href="https://www.linkedin.com/in/thomas-fernando-rodriguez-anzola-882b8b214/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:opacity-70 transition-opacity"
-          >
-            LinkedIn
-          </a>
-          <a href="/cv.pdf" download className="hover:opacity-70 transition-opacity">
-            CV
-          </a>
+          ‹
+        </button>
+
+        {/* card container */}
+        <div className="relative w-full max-w-xs sm:max-w-sm overflow-hidden">
+          <AnimatePresence custom={direction} mode="wait">
+            <Motion.div
+              key={currentIndex}
+              custom={direction}
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ type: 'spring', stiffness: 340, damping: 32 }}
+            >
+              <LevelBox project={projectsData[currentIndex]} index={currentIndex} />
+            </Motion.div>
+          </AnimatePresence>
         </div>
+
+        {/* next arrow */}
+        <button
+          onClick={nextProject}
+          aria-label="Siguiente proyecto"
+          className="hidden sm:flex items-center justify-center w-10 h-10 rounded-full ml-4 flex-shrink-0 transition-all hover:scale-110"
+          style={{
+            background: 'rgba(0,0,0,0.5)',
+            border: `1.5px solid ${NEON_CYAN}66`,
+            color: NEON_CYAN,
+            boxShadow: `0 0 12px ${NEON_CYAN}44`,
+            fontSize: 20,
+            fontWeight: 900,
+          }}
+        >
+          ›
+        </button>
+      </div>
+
+      {/* ── interactive avatar (busito rosa) — bottom center ── */}
+      <div className="relative z-10 flex justify-center pb-20 sm:pb-16">
+        <Player onClick={nextProject} />
+      </div>
+
+      {/* ground strip */}
+      <div className="absolute bottom-0 left-0 right-0 h-16" style={groundStyle} />
+
+      {/* progress dots */}
+      <div className="absolute bottom-16 left-0 right-0 flex justify-center gap-1.5 z-10 pb-1">
+        {projectsData.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => { setDirection(i > currentIndex ? 1 : -1); setCurrentIndex(i); }}
+            className="rounded-full transition-all"
+            style={{
+              width: i === currentIndex ? 16 : 6,
+              height: 6,
+              background: i === currentIndex ? NEON_CYAN : 'rgba(255,255,255,0.3)',
+              boxShadow: i === currentIndex ? `0 0 8px ${NEON_CYAN}` : 'none',
+            }}
+          />
+        ))}
+      </div>
+
+      {/* contact bar */}
+      <div
+        className="absolute bottom-0 right-0 flex items-center gap-4 px-4 py-1 text-[10px] font-black uppercase tracking-widest z-10"
+        style={{ color: NEON_YELLOW }}
+      >
+        <a
+          href="https://www.linkedin.com/in/thomas-fernando-rodriguez-anzola-882b8b214/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:opacity-70 transition-opacity"
+        >
+          LinkedIn
+        </a>
+        <a href="/cv.pdf" download className="hover:opacity-70 transition-opacity">
+          CV
+        </a>
       </div>
     </div>
   );

@@ -1,5 +1,13 @@
 [
   {
+    "id": "00",
+    "title": "INVERSIONES THOMAS",
+    "description": "Plataforma de gestión financiera e inversiones. Arquitectura Full-Stack con manipulación de datos estáticos y edición de UI dinámica.",
+    "tech": ["Python", "TypeScript", "React", "Azure App Service"],
+    "link": "https://inversiones-thomas-app-bzacbmcza5exezc2.westus3-01.azurewebsites.net/",
+    "featured": true
+  },
+  {
     "id": "01",
     "title": "GERICARE: FULL-STACK HEALTH SYSTEM",
     "description": "El núcleo de mi trabajo backend. Gestión geriátrica de alta complejidad con arquitectura escalable en Azure y seguridad de datos nivel enterprise.",
