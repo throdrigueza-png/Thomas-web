@@ -3,6 +3,7 @@ import { AnimatePresence, motion as Motion } from 'framer-motion';
 import EnterpriseMode from './components/EnterpriseMode';
 import GamingMode from './components/GamingMode';
 import ThemeToggle from './components/ThemeToggle';
+import SocialFloat from './components/SocialFloat';
 
 function App() {
   const [mode, setMode] = useState('enterprise');
@@ -14,6 +15,9 @@ function App() {
     <div className="relative overflow-x-hidden">
       {/* Floating mode toggle */}
       <ThemeToggle mode={mode} onToggle={toggleMode} />
+
+      {/* Floating social media buttons */}
+      <SocialFloat mode={mode} />
 
       {/* Mode switch with smooth transition */}
       <AnimatePresence mode="wait">

@@ -39,13 +39,16 @@ const particlesOptions = {
 
 /* ── Individual project card ── */
 const ProjectCard = ({ project }) => (
-  <Motion.div
+  <Motion.a
+    href={project.link}
+    target="_blank"
+    rel="noopener noreferrer"
     initial={{ opacity: 0, y: 24 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     whileHover={{ y: -6 }}
     transition={{ type: 'spring', stiffness: 260, damping: 22 }}
-    className="group relative p-6 rounded-2xl overflow-hidden transition-all duration-300"
+    className="group relative p-6 rounded-2xl overflow-hidden transition-all duration-300 block cursor-pointer"
     style={{
       background: 'rgba(5, 10, 30, 0.55)',
       backdropFilter: 'blur(14px)',
@@ -96,16 +99,11 @@ const ProjectCard = ({ project }) => (
         ))}
       </div>
 
-      <a
-        href={project.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-1 text-xs font-bold text-cyan-400 hover:text-cyan-200 transition-colors tracking-widest uppercase"
-      >
+      <span className="inline-flex items-center gap-1 text-xs font-bold text-cyan-400 group-hover:text-cyan-200 transition-colors tracking-widest uppercase">
         Ver proyecto <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
-      </a>
+      </span>
     </div>
-  </Motion.div>
+  </Motion.a>
 );
 
 /* ── Main EnterpriseMode component ── */
@@ -243,7 +241,7 @@ const EnterpriseMode = () => {
             className="flex gap-4 mt-8"
           >
             <a
-              href="https://www.linkedin.com/in/thomas-fernando-rodriguez-anzola-882b8b214/"
+              href="https://co.linkedin.com/in/thomas-fernando-rodr%C3%ADguez-anzola-882b8b214"
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-500 hover:text-cyan-400 transition-colors text-xs font-bold uppercase tracking-widest"

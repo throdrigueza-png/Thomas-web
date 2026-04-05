@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion as Motion, AnimatePresence } from 'framer-motion';
 import projectsData from '../data/projects.json';
 import animeThomas from '../anime-thomas.jpg';
@@ -83,13 +83,16 @@ const LevelBox = ({ project, index }) => {
   const isTop = index % 2 === 0;
 
   return (
-    <Motion.div
+    <Motion.a
+      href={project.link}
+      target="_blank"
+      rel="noopener noreferrer"
       initial={{ opacity: 0, y: isTop ? -30 : 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       whileHover={{ scale: 1.06, rotate: [-0.5, 0.5, 0] }}
       transition={{ type: 'spring', stiffness: 300, damping: 18 }}
-      className="relative flex-shrink-0 cursor-pointer"
+      className="relative flex-shrink-0 cursor-pointer block"
       style={{
         marginTop: isTop ? 40 : 120,
         width: 220,
@@ -152,18 +155,14 @@ const LevelBox = ({ project, index }) => {
           ))}
         </div>
 
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={(e) => e.stopPropagation()}
-          className="text-[10px] font-black uppercase tracking-widest transition-all inline-flex items-center gap-1"
+        <span
+          className="text-[10px] font-black uppercase tracking-widest inline-flex items-center gap-1"
           style={{ color }}
         >
           PLAY → <span className="text-xs">🎮</span>
-        </a>
+        </span>
       </div>
-    </Motion.div>
+    </Motion.a>
   );
 };
 
@@ -257,6 +256,7 @@ const slideVariants = {
 const GamingMode = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1);
+  const touchStartX = useRef(null);
 
   const nextProject = () => {
     setDirection(1);
@@ -268,10 +268,36 @@ const GamingMode = () => {
     setCurrentIndex((prev) => (prev - 1 + projectsData.length) % projectsData.length);
   };
 
+  /* ── Touch / swipe support ── */
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+    const delta = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(delta) > 40) {
+      delta < 0 ? nextProject() : prevProject();
+    }
+    touchStartX.current = null;
+  };
+
+  /* ── Keyboard support (← → Space) ── */
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextProject(); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); prevProject(); }
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, []);
+
   return (
     <div
       className="relative w-full min-h-screen flex flex-col overflow-hidden"
       style={skyStyle}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       {/* background decorations */}
       <div className="absolute inset-0 pointer-events-none">
@@ -304,11 +330,11 @@ const GamingMode = () => {
 
       {/* ── carousel area ── */}
       <div className="relative z-10 flex-1 flex items-center justify-center px-4 py-2">
-        {/* prev arrow */}
+        {/* prev arrow — visible on all screen sizes */}
         <button
           onClick={prevProject}
           aria-label="Proyecto anterior"
-          className="hidden sm:flex items-center justify-center w-10 h-10 rounded-full mr-4 flex-shrink-0 transition-all hover:scale-110"
+          className="flex items-center justify-center w-10 h-10 rounded-full mr-4 flex-shrink-0 transition-all hover:scale-110"
           style={{
             background: 'rgba(0,0,0,0.5)',
             border: `1.5px solid ${NEON_PINK}66`,
@@ -338,11 +364,11 @@ const GamingMode = () => {
           </AnimatePresence>
         </div>
 
-        {/* next arrow */}
+        {/* next arrow — visible on all screen sizes */}
         <button
           onClick={nextProject}
           aria-label="Siguiente proyecto"
-          className="hidden sm:flex items-center justify-center w-10 h-10 rounded-full ml-4 flex-shrink-0 transition-all hover:scale-110"
+          className="flex items-center justify-center w-10 h-10 rounded-full ml-4 flex-shrink-0 transition-all hover:scale-110"
           style={{
             background: 'rgba(0,0,0,0.5)',
             border: `1.5px solid ${NEON_CYAN}66`,
@@ -387,7 +413,7 @@ const GamingMode = () => {
         style={{ color: NEON_YELLOW }}
       >
         <a
-          href="https://www.linkedin.com/in/thomas-fernando-rodriguez-anzola-882b8b214/"
+          href="https://co.linkedin.com/in/thomas-fernando-rodr%C3%ADguez-anzola-882b8b214"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:opacity-70 transition-opacity"

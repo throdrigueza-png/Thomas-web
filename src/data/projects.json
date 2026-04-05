@@ -62,5 +62,21 @@
     "tech": ["python", "front", "responsive"],
     "link": "https://lemon-ocean-0f749e70f.4.azurestaticapps.net",
     "featured": false
+  },
+  {
+    "id": "08",
+    "title": "INMOBILIARIA ANZOLA — MÓNICA",
+    "description": "Plataforma inmobiliaria personal de Mónica Anzola. Gestión de propiedades, búsqueda avanzada e integración con PostgreSQL y APIs REST.",
+    "tech": ["React", "Python", "PostgreSQL", "Azure Static Apps"],
+    "link": "https://nice-desert-0564dc70f.1.azurestaticapps.net/",
+    "featured": true
+  },
+  {
+    "id": "09",
+    "title": "INMOBILIARIA INTERNACIONAL — ESPAÑA",
+    "description": "Plataforma inmobiliaria para cliente internacional en España. Backend robusto con APIs REST, base de datos PostgreSQL y despliegue Azure.",
+    "tech": ["React", "Python", "PostgreSQL", "Azure App Service", "APIs REST"],
+    "link": "https://inmobiliaria-feb9h0hnb0fuc5cd.westus3-01.azurewebsites.net/",
+    "featured": true
   }
 ]
