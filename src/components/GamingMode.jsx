@@ -282,11 +282,19 @@ const GamingMode = () => {
     touchStartX.current = null;
   };
 
-  /* ── Keyboard support (← → Space) ── */
+  /* ── Keyboard support (← → Space) — inline state updates avoid stale closures ── */
   useEffect(() => {
     const handleKey = (e) => {
-      if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextProject(); }
-      if (e.key === 'ArrowLeft') { e.preventDefault(); prevProject(); }
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        setDirection(1);
+        setCurrentIndex((prev) => (prev + 1) % projectsData.length);
+      }
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        setDirection(-1);
+        setCurrentIndex((prev) => (prev - 1 + projectsData.length) % projectsData.length);
+      }
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
