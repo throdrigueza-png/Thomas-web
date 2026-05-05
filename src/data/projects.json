@@ -4,7 +4,7 @@
     "title": "INVERSIONES THOMAS",
     "description": "Plataforma de gestión financiera e inversiones. Arquitectura Full-Stack con manipulación de datos estáticos y edición de UI dinámica.",
     "tech": ["Python", "TypeScript", "React", "Azure App Service"],
-    "link": "https://inversiones-thomas-app-bzacbmcza5exezc2.westus3-01.azurewebsites.net/",
+    "link": "https://portal-de-finanzas-thomas-d8frdfa8f7hvdhff.westus3-01.azurewebsites.net/",
     "featured": true
   },
   {
